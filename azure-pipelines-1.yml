@@ -27,6 +27,11 @@ stages:
     pool:
       rei
     steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          pwd 
+          ls
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
