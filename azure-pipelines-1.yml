@@ -13,7 +13,6 @@ variables:
   dockerRegistryServiceConnection: 'a79ca96c-2709-4edf-9462-5eb511a9a4a4'
   imageRepository: 'reiharasanitest'
   containerRegistry: 'reiharasani.azurecr.io'
-  dockerfilePath: '/home/reiharasani/myagent/_work/2/s/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -39,7 +38,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
+        dockerfile: /home/reiharasani/myagent/_work/2/s
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
