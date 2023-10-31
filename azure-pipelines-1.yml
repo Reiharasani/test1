@@ -13,6 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'a79ca96c-2709-4edf-9462-5eb511a9a4a4'
   imageRepository: 'reiharasanitest'
   containerRegistry: 'reiharasani.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -26,19 +27,12 @@ stages:
     pool:
       rei
     steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          pwd 
-          ls -all
-          chmod -R 777 Dockerfile
-          ls -all
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: /home/reiharasani/myagent/_work/2/s
+        dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
