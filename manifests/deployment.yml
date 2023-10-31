@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: reiharasanitest 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reiharasanitest
+  template:
+    metadata:
+      labels:
+        app: reiharasanitest 
+    spec:
+      containers:
+        - name: reiharasanitest 
+          image: reiharasani.azurecr.io/reiharasanitest
+          ports:
+          - containerPort: 80
