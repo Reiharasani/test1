@@ -52,7 +52,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     pool:
-      vmImage: $(vmImageName)
+      rei
     environment: 'Reiharasanitest1.default'
     strategy:
       runOnce:
